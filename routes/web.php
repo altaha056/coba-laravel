@@ -24,3 +24,10 @@ Route::get('categories/{category:slug}', function(Category $category){return vie
     'posts'=>$category->posts,
     'category' => $category->name]);
 });
+
+Route::get('categories', function() {
+    return view('categories', [
+        'title' => "Post Categories",
+        'categories' => Category::all()
+    ]);
+});
