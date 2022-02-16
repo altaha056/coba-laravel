@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('container')
     
-<h1>News</h1>
-<p>This is a {{ $title }} page</p>
+<article class="my-2 py-5 border-bottom">
+    <h2>{{ $title }}</h2>
+</article>
 
 @foreach ($posts as $item)
 
@@ -15,11 +16,11 @@
     
     <p>
         by <a href="/authors/{{ $item->author->username }}" class="text-decoration-none">
-            {{ $item -> author-> name }}
+            {{ $item -> author-> username }}
         </a> 
         in 
         <a href="/categories/{{ $item -> category -> slug }}" class="text-decoration-none"> 
-            {{ $item -> category -> name }}
+            {{ $item -> category -> slug }}
         </a>
     </p>
     

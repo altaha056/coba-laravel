@@ -30,23 +30,23 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('asd')
         // ]);
         User::factory(5)->create();
-        
-        Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal',
-        ]);
-
-        Category::create([
-            'name' => 'Web Programming',
-            'slug' => 'web-programming',
-        ]);
-
-        Category::create([
-            'name' => 'Football',
-            'slug' => 'football',
-        ]);
-
         Post::factory(22)->create();
+        Category::factory(3)->create();
+        // Category::create([
+        //     'name' => 'Personal',
+        //     'slug' => 'personal',
+        // ]);
+
+        // Category::create([
+        //     'name' => 'Web Programming',
+        //     'slug' => 'web-programming',
+        // ]);
+
+        // Category::create([
+        //     'name' => 'Football',
+        //     'slug' => 'football',
+        // ]);
+
         // Post::create([
         //     'title' => 'Man United Go to School',
         //     'category_id' => 1,
