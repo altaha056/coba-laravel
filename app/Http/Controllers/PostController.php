@@ -8,7 +8,13 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        return view('posts', ["title" => "blog", "posts" => Post::all()]);
+        return view(
+            'posts', [
+                "title" => "blog", 
+                // "posts" => Post::all()
+                "posts" => Post::latest()->get()
+            ]
+        );
     }
 
     public function show(Post $post){

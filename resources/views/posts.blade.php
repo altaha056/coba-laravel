@@ -14,8 +14,8 @@
     </h3>
     
     <p>
-        by <a href="" class="text-decoration-none">
-            {{ $item -> user-> name }}
+        by <a href="/authors/{{ $item->author->username }}" class="text-decoration-none">
+            {{ $item -> author-> name }}
         </a> 
         in 
         <a href="/categories/{{ $item -> category -> slug }}" class="text-decoration-none"> 
