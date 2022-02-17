@@ -2,9 +2,6 @@
 
 @section('container')
 
-    
-    
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -27,7 +24,7 @@
                         <img src="https://source.unsplash.com/1200x500?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}" class="image-fluid">
                     </div>
                     <p>{!! $post->body!!}</p>
-                    <a href="{{ URL::previous() }}" style="mb-5" class="text-decoration-none">Back</a>
+                    <a href="{{ URL::previous() }}" style="mb-5" class="text-decoration-none">Back Previous</a>
                 </article>
             </div>
         </div>

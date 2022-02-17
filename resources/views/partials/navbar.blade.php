@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/home">Digiknow</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,15 +13,15 @@
           <a class="nav-link {{ ($active==="about")? 'active' : '' }}" href="/about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($active==="posts")? 'active' : '' }}" href="/blog">Posts</a>
+          <a class="nav-link {{ ($active==="posts")? 'active' : '' }}" href="/posts">Posts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ ($active==="category")? 'active' : '' }}" href="/categories">Categories</a>
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        {{-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button> --}}
       </form>
     </div>
   </div>

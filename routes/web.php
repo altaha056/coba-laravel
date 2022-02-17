@@ -36,7 +36,7 @@ Route::get(
 );
 
 Route::get(
-    '/blog',
+    '/posts',
     [
         PostController::class, 'index'
     ]

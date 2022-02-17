@@ -2,9 +2,20 @@
     @section('container')
     
     <article class="my-2 py-5 ">
-        <h2>{{ $title }}</h2>
+        <h2 class="text-center mb-3">{{ $title }}</h2>
+        <div class="row  justify-content-center">
+            <div class=" col-md-6">
+                <form action="/posts">
+                    <div class="input-group mb-3">
+                        <input type="text" value="{{ request('search') }}" class="form-control" placeholder="search" name="search">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </div>                
+                </form>
+            </div>
+        </div>
     </article>
     
+        
     @if ($posts->count())        
         
     <div class="card mt-2 mb-5 p-2">
@@ -69,7 +80,9 @@
     </div>
     
     @else
-        <h3>no post found.</h3>
+        <article class="my-2 py-5 ">
+            <h2>Sorry, no post found :(</h2>
+        </article>
     @endif
     
 @endsection
