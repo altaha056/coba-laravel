@@ -31,21 +31,25 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::factory(5)->create();
         Post::factory(22)->create();
-        Category::factory(3)->create();
-        // Category::create([
-        //     'name' => 'Personal',
-        //     'slug' => 'personal',
-        // ]);
+        // Category::factory(4)->create();
+        Category::create([
+            'name' => 'Personal',
+            'slug' => 'personal',
+        ]);
 
-        // Category::create([
-        //     'name' => 'Web Programming',
-        //     'slug' => 'web-programming',
-        // ]);
+        Category::create([
+            'name' => 'Programming',
+            'slug' => 'programming',
+        ]);
+        Category::create([
+            'name' => 'Nature',
+            'slug' => 'nature',
+        ]);
 
-        // Category::create([
-        //     'name' => 'Football',
-        //     'slug' => 'football',
-        // ]);
+        Category::create([
+            'name' => 'Automotive',
+            'slug' => 'automotive',
+        ]);
 
         // Post::create([
         //     'title' => 'Man United Go to School',

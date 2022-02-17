@@ -12,13 +12,15 @@ class CategoryController extends Controller
         return view('posts', [
             'title' => "Post by category: $category->slug",
             'posts' => $category-> posts->load('category', 'author'),
+            "active" => "category",
         ]);
     }
 
     public function all() {
     return view('categories', [
-        'title' => 'Tulisan Berdasarkan Kategori',
-        'categories' => Category::all()
+        'title' => 'All Categories',
+        'categories' => Category::all(),
+            "active" => "category"
     ]);
 }
 }

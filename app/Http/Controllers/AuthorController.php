@@ -11,6 +11,7 @@ class AuthorController extends Controller
     return view('posts', [
         'title' => "Posts by: $author->username",
         'posts' => $author->posts->load('category', 'author'),
+            "active" => "category"
     ]);
 }
 }
