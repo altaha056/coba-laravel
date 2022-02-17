@@ -10,34 +10,62 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 
-Route::get('/',
-    [HomeController::class, 'welcome'
-]);
+// Route::get('/',
+//     [HomeController::class, 'welcome'
+// ]);
 
-Route::get('/home',
-    [HomeController::class, 'home'
-]);
+Route::get(
+    '/',
+    [
+        HomeController::class, 'home'
+    ]
+);
 
-Route::get('/about',
-    [AboutController::class, 'index'
-]);
+Route::get(
+    '/home',
+    [
+        HomeController::class, 'home'
+    ]
+);
 
-Route::get('/blog',
-    [PostController::class, 'index'
-]);
+Route::get(
+    '/about',
+    [
+        AboutController::class, 'index'
+    ]
+);
 
-Route::get('/posts/{post:slug}',
-    [PostController::class, 'show'
-]);
+Route::get(
+    '/blog',
+    [
+        PostController::class, 'index'
+    ]
+);
 
-Route::get('/categories/{category:slug}',
-    [CategoryController::class, 'item'
-]);
+Route::get(
+    '/posts/{post:slug}',
+    [
+        PostController::class, 'show'
+    ]
+);
 
-Route::get('/categories',
-    [CategoryController::class, 'all'
-]);
+Route::get(
+    '/categories/{category:slug}',
+    [
+        CategoryController::class, 'item'
+    ]
+);
 
-Route::get('/authors/{author:username}',
-    [AuthorController::class, 'ownProperty'
-]);
+Route::get(
+    '/categories',
+    [
+        CategoryController::class, 'all'
+    ]
+);
+
+Route::get(
+    '/authors/{author:username}',
+    [
+        AuthorController::class, 'ownProperty'
+    ]
+);
