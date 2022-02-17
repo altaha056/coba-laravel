@@ -85,6 +85,10 @@
         @endforeach
     </div>
     
+    <div class="d-flex justify-content-center mb-5 mb-5 mb-5 mb-5 mb-5">
+        {{ $posts->links() }}
+    </div>
+    
     @else
         <article class="my-2 py-5 ">
             <h2>Sorry, no post found :(</h2>
