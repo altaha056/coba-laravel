@@ -49,23 +49,11 @@ Route::get(
     ]
 );
 
-Route::get(
-    '/categories/{category:slug}',
-    [
-        CategoryController::class, 'item'
-    ]
-);
+
 
 Route::get(
     '/categories',
     [
         CategoryController::class, 'all'
-    ]
-);
-
-Route::get(
-    '/authors/{author:username}',
-    [
-        AuthorController::class, 'ownProperty'
     ]
 );
