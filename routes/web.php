@@ -28,3 +28,7 @@ Route::get('/dashboard',function(){
 })->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+//method get    -> index
+//method post   -> store
+//method put    -> update
+//method delete -> destroy
