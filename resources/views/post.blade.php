@@ -21,7 +21,14 @@
                 </article>
                 <article class="my-2 pt-5 pb-5 mb-5 border-bottom">                    
                     <div class="mb-5">
+                        @if ($post->image)
+                        <div style="max-height: 350px; overflow:hidden";>
+                            <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top" alt="{{ $post->category->name }}" class="image-fluid">
+                        </div>
+
+                        @else
                         <img src="https://source.unsplash.com/1200x500?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}" class="image-fluid">
+                        @endif
                     </div>
                     <p>{!! $post->body!!}</p>
                     <a href="{{ URL::previous() }}" style="mb-5" class="text-decoration-none">Back Previous</a>
