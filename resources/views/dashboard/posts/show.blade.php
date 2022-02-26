@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row my-5">
             <div class="col-lg-8">
-                <article class="my-2 pt-5 pb-2 border-bottom">
+                <article class="my-2 border-bottom">
                     <h2>{{ $post->title }}</h2>
                     <p>
                         {{ $post->created_at->diffForHumans() }}
