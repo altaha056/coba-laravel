@@ -1,26 +1,40 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\PostController;
-use App\Models\Category;
-use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\RegisterController;
 
-Route::get('/', function () {
-    return view('welcome', ["title" => "welcome page"]);
-});
-Route::get('/home', function () {
-    return view('home', ["title" => "homepage"]);
-});
-
+Route::get('/', [HomeController::class, 'home']);
+Route::get('/home', [HomeController::class, 'home']);
 Route::get('/about', [AboutController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/categories', [CategoryController::class, 'all']);
 
-Route::get('/blog', [PostController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get( 'posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('categories/{category:slug}', function(Category $category){return view('category', [
-    'title'=> $category->name,
-    'posts'=>$category->posts,
-    'category' => $category->name]);
-});
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->middleware('auth');
+
+
+Route::get('dashboard/posts/createSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+//method get    -> index
+//method post   -> store
+//method put    -> update
+//method delete -> destroy
+
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');

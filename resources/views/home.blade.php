@@ -1,4 +1,6 @@
 @extends('layouts.main')
 @section('container')
-<h1>Ini halaman home</h1>
+    <article class="my-2 py-5 border-bottom">
+        <h2>{{ $title }}</h2>
+    </article>
 @endsection
