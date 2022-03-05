@@ -27,11 +27,12 @@
     <div class="card mt-2 mb-5 p-2">
         @if ($posts[0]->image)
         <div style="max-height: 350px; overflow:hidden";>
-            <img src="{{ asset('storage/' . $posts[0]->image) }}" class="card-img-top" alt="{{ $posts[0]->category->name }}" class="image-fluid">
+            
+            <img src="{{ asset('storage/' . $posts[0]->image) }}" class="card-img-top" alt="{{ $posts[0]->category?$posts[0]->category->name:$posts[0]->title }}" class="image-fluid">
         </div>
 
         @else
-        <img src="https://source.unsplash.com/1600x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
+        <img src="https://source.unsplash.com/1600x400?{{ $posts[0]->category?$posts[0]->category->name:'' }}" class="card-img-top" alt="{{ $posts[0]->category?$posts[0]->category->name:$posts[0]->title }}">
         @endif
         <div class="card-body text-center">
             <a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none text-dark">
@@ -42,10 +43,14 @@
                      {{ $posts[0]->created_at->diffForHumans() }} by <a href="/posts?author={{ $posts[0]->author->username }}" class="text-decoration-none">
                         {{ $posts[0] -> author-> username }}
                     </a> 
-                    in 
+                    @if (
+                        ($posts[0] -> category)
+                    )
+                        in 
                     <a href="/posts?category={{ $posts[0]->category->slug }}" class="text-decoration-none"> 
                         {{ $posts[0] -> category -> slug }}
                     </a>
+                    @endif
                 </small>
             </p>
             <p class="card-text">{{ $posts[0]->excerpt }}</p>
@@ -61,14 +66,21 @@
         @foreach ($posts->skip(1) as $item)
             <div class="col-md-4 mb-5">
                 <div class="card">
-                    <a href="/posts?category={{ $item->category->slug }}">
-                        <div class="position-absolute m-2 py-1 px-3 text-white" style="background-color: rgba(0, 0, 0, 0.6)">{{ $item->category->name  }}</div>
-                    </a>
+                    @if ($item->category)
+                        <a href="/posts?category={{ $item->category->slug }}">
+                            <div class="position-absolute m-2 py-1 px-3 text-white" style="background-color: rgba(0, 0, 0, 0.6)">{{ $item->category->name  }}</div>
+                        </a>
+                            
+                        @else
+                            <div class="position-absolute m-2 py-1 px-3 text-white" style="background-color: rgba(0, 0, 0, 0.6)">No Category</div>
+                        
+                    @endif
                     @if ($item->image)
-                        <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top" alt="{{ $item->category->name }}" class="image-fluid">
+                        <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top" alt="{{ $item->title}}" class="image-fluid">
 
                     @else
-                        <img src="https://source.unsplash.com/800x500?{{ $item->category->name }}" class="card-img-top" alt="{{ $item->category->name }}">
+
+                        <img src="https://source.unsplash.com/800x500?{{ $item->category?$item->category->name:'' }}" class="card-img-top" alt="{{ $item->title }}">
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">

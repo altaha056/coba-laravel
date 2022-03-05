@@ -13,21 +13,23 @@
                         by <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none">
                             {{ $post -> author-> username }}
                         </a> 
-                        in 
-                        <a href="/posts?category={{ $post -> category -> slug }}" class="text-decoration-none"> 
-                            {{ $post -> category -> slug }}
-                        </a>
+                        @if ($post->category)
+                            in 
+                            <a href="/posts?category={{ $post -> category -> slug }}" class="text-decoration-none"> 
+                                {{ $post -> category -> slug }}
+                            </a>
+                        @endif
                     </p>
                 </article>
                 <article class="my-2 pt-5 pb-5 mb-5 border-bottom">                    
                     <div class="mb-5">
                         @if ($post->image)
                         <div style="max-height: 350px; overflow:hidden";>
-                            <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top" alt="{{ $post->category->name }}" class="image-fluid">
+                            <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top" alt="{{ $post->title }}" class="image-fluid">
                         </div>
 
                         @else
-                        <img src="https://source.unsplash.com/1200x500?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}" class="image-fluid">
+                        <img src="https://source.unsplash.com/1200x500?{{ $post->category?$post->category->name:'' }}" class="card-img-top" alt="{{ $post->title }}" class="image-fluid">
                         @endif
                     </div>
                     <p>{!! $post->body!!}</p>

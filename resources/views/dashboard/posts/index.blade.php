@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $post->title }}</td>
-                    <td>{{ $post->category->name }}</td>
+                    <td>{{ $post->category?$post->category->name:'No category' }}</td>
                     <td>
                         <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info">
                           <span data-feather="eye"></span>

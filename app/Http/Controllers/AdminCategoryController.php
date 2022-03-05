@@ -16,7 +16,7 @@ class AdminCategoryController extends Controller
     {
         $this->authorize('admin');
         return view('dashboard.categories.index', [
-            'categories'=>Category::all()
+            'categories' => Category::all()
         ]);
     }
 
@@ -27,7 +27,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -38,7 +38,14 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories|max:20',
+            'slug' => 'required|unique:categories|max:20',
+        ]);
+
+        Category::create($validatedData);
+        return redirect('/dashboard/categories')->with('success', 'new category has been added.');
+        
     }
 
     /**
@@ -83,6 +90,7 @@ class AdminCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('/dashboard/categories')->with('success', 'category has been deleted.');
     }
 }
