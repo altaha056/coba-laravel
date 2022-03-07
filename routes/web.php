@@ -38,3 +38,4 @@ Route::resource('/dashboard/posts', DashboardPostController::class)->middleware(
 //method delete -> destroy
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+//except('show') berfungsi untuk tidak menyertakan method show pada controller

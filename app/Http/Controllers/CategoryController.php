@@ -10,9 +10,9 @@ class CategoryController extends Controller
     public function item(Category $category)
     {
         return view('posts', [
-            'title' => "Post by category: $category->slug",
+            'title' => "Post by category: $category->name",
             'posts' => $category-> posts->load('category', 'author'),
-            "active" => "category",
+            'active' => 'category',
         ]);
     }
 
@@ -20,7 +20,7 @@ class CategoryController extends Controller
     return view('categories', [
         'title' => 'All Categories',
         'categories' => Category::all(),
-            "active" => "category"
+        'active' => 'category'
     ]);
 }
 }

@@ -13,7 +13,7 @@ class PostController extends Controller
     {
         $title = '';
         if (request('category')) {
-            $category = Category::firstWhere('slug', request('category'));
+            $category = Category::firstWhere('name', request('category'));
             $title = ' in ' . $category->name;
         }
         if (request('author')) {

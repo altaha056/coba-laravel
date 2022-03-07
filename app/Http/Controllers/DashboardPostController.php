@@ -122,7 +122,7 @@ class DashboardPostController extends Controller
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Post::where('id', $post->id)->update($validatedData);
-        return redirect('/dashboard/posts')->with('success', 'new post has been updated.');
+        return redirect('/dashboard/posts')->with('success', 'post has been updated.');
     
     }
 
@@ -132,6 +132,7 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy(Post $post)
     {
         if ($post->image) {
