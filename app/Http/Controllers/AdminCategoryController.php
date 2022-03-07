@@ -40,7 +40,7 @@ class AdminCategoryController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|unique:categories|max:20',
-            'slug' => 'required|unique:categories|max:20',
+            // 'slug' => 'required|unique:categories|max:20',
         ]);
 
         Category::create($validatedData);
@@ -67,7 +67,9 @@ class AdminCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard.categories.edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -79,7 +81,13 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories|max:20',
+            // 'slug' => 'required|unique:categories|max:20',
+        ]);
+
+        Category::where('id', $category->id)->update($validatedData);
+        return redirect('/dashboard/categories')->with('success', 'category has been updated.');
     }
 
     /**

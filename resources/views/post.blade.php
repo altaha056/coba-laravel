@@ -15,8 +15,8 @@
                         </a> 
                         @if ($post->category)
                             in 
-                            <a href="/posts?category={{ $post -> category -> slug }}" class="text-decoration-none"> 
-                                {{ $post -> category -> slug }}
+                            <a href="/posts?category={{ $post -> category -> name }}" class="text-decoration-none"> 
+                                {{ $post -> category -> name }}
                             </a>
                         @endif
                     </p>

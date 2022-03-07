@@ -27,11 +27,11 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $category->name }}</td>
           <td>
-            <a href="/dashboard/categories/{{ $category->slug }}/edit" class="badge bg-warning border-0">
+            <a href="/dashboard/categories/{{ $category->name }}/edit" class="badge bg-warning border-0">
               <span data-feather="edit"></span> Edit
             </a>
             
-            <form action="/dashboard/categories/{{ $category->slug }}" method="post" class="d-inline">
+            <form action="/dashboard/categories/{{ $category->name }}" method="post" class="d-inline">
               @method('delete')
               @csrf
               <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">
@@ -54,12 +54,6 @@
       <div class="form-group mb-2">
         <input type="text" name="name" class="my-3 form-control @error('name') is-invalid @enderror" id="name" placeholder="category name" required  value="{{ old('name') }}"> 
         @error('name') 
-          <div class="invalid-feedback">
-              {{ $message }}
-          </div> 
-        @enderror
-        <input type="text" name="slug" class="my-3 form-control @error('slug') is-invalid @enderror" id="slug" placeholder="category slug" required  value="{{ old('slug') }}"> 
-        @error('slug') 
           <div class="invalid-feedback">
               {{ $message }}
           </div> 

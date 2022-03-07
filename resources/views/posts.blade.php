@@ -47,8 +47,8 @@
                         ($posts[0] -> category)
                     )
                         in 
-                    <a href="/posts?category={{ $posts[0]->category->slug }}" class="text-decoration-none"> 
-                        {{ $posts[0] -> category -> slug }}
+                    <a href="/posts?category={{ $posts[0]->category->name }}" class="text-decoration-none"> 
+                        {{ $posts[0] -> category -> name }}
                     </a>
                     @endif
                 </small>
@@ -67,7 +67,7 @@
             <div class="col-md-4 mb-5">
                 <div class="card">
                     @if ($item->category)
-                        <a href="/posts?category={{ $item->category->slug }}">
+                        <a href="/posts?category={{ $item->category->name }}">
                             <div class="position-absolute m-2 py-1 px-3 text-white" style="background-color: rgba(0, 0, 0, 0.6)">{{ $item->category->name  }}</div>
                         </a>
                             

@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Altaha',
             'username' => 'altaha',
-
             'email' => 'alta@gmail.com',
             'password' => bcrypt('asdasdasd')
         ]);
@@ -32,21 +31,17 @@ class DatabaseSeeder extends Seeder
         // Category::factory(4)->create();
         Category::create([
             'name' => 'Personal',
-            'slug' => 'personal',
         ]);
 
         Category::create([
             'name' => 'Programming',
-            'slug' => 'programming',
         ]);
         Category::create([
             'name' => 'Nature',
-            'slug' => 'nature',
         ]);
 
         Category::create([
             'name' => 'Automotive',
-            'slug' => 'automotive',
         ]);
 
         // Post::create([
